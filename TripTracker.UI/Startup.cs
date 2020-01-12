@@ -47,7 +47,7 @@ namespace TripTracker.UI
 			{
 				BaseAddress = new Uri(Configuration["serviceUrl"])
 			};
-			services.AddScoped(_ => 
+			services.AddScoped(_ =>
 				new HttpClient
 				{
 					BaseAddress = new Uri(Configuration["serviceUrl"])
@@ -88,7 +88,12 @@ namespace TripTracker.UI
 
 			app.UseAuthentication();
 
-			app.UseMvc();
+			app.UseMvc(routes =>
+			{
+				routes.MapRoute(
+				name: "MyArea",
+				template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+			});
 		}
 	}
 }

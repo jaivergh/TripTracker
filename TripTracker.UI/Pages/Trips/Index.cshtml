@@ -10,8 +10,8 @@
 
 <h2>Index</h2>
 
-//Check user policy
-@if (await Auth.AuthorizeAsync(User, null, "Policy") == AuthorizationResult.Success())
+@*Check user policy*@
+@if ((await Auth.AuthorizeAsync(User, null, "Policy")).Succeeded )
 {
 
 }
